@@ -1,0 +1,93 @@
+@import '../../../theme/variables.scss';
+
+.box {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-radius: 6px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &.gray {
+    border-color: $icon-gray-hover;
+
+    &:hover {
+      background: $icon-gray-hover;
+    }
+
+    &.active {
+      background: $icon-gray-hover;
+    }
+  }
+
+  &.blue {
+    border-color: #3074f3;
+
+    &:hover {
+      background: #3074f3;
+    }
+
+    &.active {
+      background: #3074f3;
+    }
+  }
+
+  &.purpule {
+    border-color: #3f51b5;
+    
+    &:hover {
+      background: #3f51b5;
+    }
+
+    &.active {
+      background: #3f51b5;
+    }
+
+  }
+
+  &.green {
+    border-color: #33b679;
+    
+    &:hover {
+      background: #33b679;
+    }
+
+    &.active {
+      background: #33b679;
+    }
+
+  }
+
+  &.red {
+    border-color: #d81a60;
+    
+    &:hover {
+      background: #d81a60;
+    }
+
+    &.active {
+      background: #d81a60;
+    }
+
+  }
+
+  &.orange {
+    border-color: #f09300;
+    
+    &:hover {
+      background: #f09300;
+    }
+
+    &.active {
+      background: #f09300;
+    }
+
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "/api/**" : {
+    "target": "https://skyeng-back.handh.ru",
+    "secure": false,
+    "changeOrigin": true,
+    "autoRewrite": true,
+    "logLevel": "debug"
+  }
+}

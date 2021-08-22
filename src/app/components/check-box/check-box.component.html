@@ -1,0 +1,5 @@
+<div class="box" (click)="toggleCheck($event)" [class.active]="check" [ngClass]="color">
+  <div class="check">
+    <img class="icon" *ngIf="check" src="assets/icons/ic-check-active.svg">
+  </div>
+</div>

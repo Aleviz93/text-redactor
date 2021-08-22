@@ -1,0 +1,55 @@
+<div class="menu-formatt" [matMenuTriggerFor]="menu">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <div class="menu-button">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('p')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-text.svg">
+    </div>
+    <div class="title">Текст</div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('H1')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-h-1.svg">
+    </div>
+    <div class="title">Заголовок 1</div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('H2')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-h-2.svg">
+    </div>
+    <div class="title">Заголовок 2</div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('todo')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-to-do-list.svg">
+    </div>
+    <div class="title">To-do List</div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('insertUnorderedList')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-bullet.svg">
+    </div>
+    <div class="title">Буллет</div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('insertOrderedList')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-number.svg">
+    </div>
+    <div class="title">Нумерованный список</div>
+  </div>
+  <div class="button-menu" (click)="setFormatt('delete')">
+    <div class="icon-button">
+      <img class="icon" src="assets/icons/ic-delete.svg">
+    </div>
+    <div class="title">Удалить блок</div>
+  </div>
+</mat-menu>

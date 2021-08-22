@@ -1,0 +1,69 @@
+<div class="text-redactor-wrapper">
+  <div class="content-wrapper">
+    <div class="header">
+      <div class="title" id="title-editable" (keydown)="keyboardKeyListenner($event)" contenteditable placeholder="Введите заголовок" (input)="saveChange()">
+        {{question.title}}
+      </div>
+      <div class="bottom-line"></div>
+    </div>
+    <div class="content-text" (mouseup)="slectMousePosition($event)">
+      <perfect-scrollbar id="text-content" *ngIf="question.contents.length > 0 && questionForSave.contents.length > 0">
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+          <div cdkDrag class="redactor-wrapper" *ngFor="let item of question.contents; let i=index"
+            (mouseover)="targetIndex = i" (mouseleave)="targetIndex = null">
+            <app-menu-formatt cdkDragHandle [class.show]="targetIndex === i" (setMenu)="setFormattBlock($event, i)" [ngStyle]="{'top': menuIconPosition(item) + 'px'}">
+            </app-menu-formatt>
+            <div class="content-block">
+              <app-check-box *ngIf="item.type === 'todo'" [check]="item.checkStatus"
+                (checkEmit)="emitCheckBox($event, i)">
+              </app-check-box>
+
+              <div class="placeholder" *ngIf="checkTrimContent(i) === '' && checkTrimContent(i + 1) != ''" [ngClass]="item.type">{{placeholder[item.type]}}</div>
+              <div contenteditable class="content-edit" id="content-editable-{{i}}"
+                spellcheck="false" [innerHTML]="item.content" [class.through]="item.checkStatus && item.type === 'todo'"
+                (input)="emitChanges($event, i)" (keydown)="keyboardKeyListenner($event)">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="redactor-wrapper">
+          <div class="add-block" (click)="addBlock()">
+            +
+          </div>
+        </div>
+
+        <app-custom-modal id="format-text" [position]="modals.formatt">
+          <div class="formatt-menu" (click)="modalService.close('format-text')">
+            <div class="formatt-button" (click)="setFormattText($event, 'b')">
+              <img class="icon" src="assets/icons/ic-bold@3x.png">
+              <img class="background">
+            </div>
+            <div class="formatt-button" (click)="setFormattText($event, 'i')">
+              <img class="icon" src="assets/icons/ic-itallic@3x.png">
+              <img class="background">
+            </div>
+            <div class="formatt-button" (click)="setFormattText($event, 'link')">
+              <img class="icon" src="assets/icons/ic-link.svg">
+              <img class="background">
+            </div>
+
+            <div class="link-block" *ngIf="showLink" id="link-block" (click)="$event.stopPropagation();">
+              <input type="text" placeholder="https://..." #link>
+              <div class="button-wrapper" (click)="createLink(link)">
+                <a class="primary button">
+                  Создать
+                </a>
+              </div>
+            </div>
+          </div>
+        </app-custom-modal>
+
+        <app-custom-modal id="search-users" [position]="modals.users">
+          <div class="search-users">
+            {{searchUsersInput}}
+          </div>
+        </app-custom-modal>
+      </perfect-scrollbar>
+    </div>
+  </div>
+</div>
